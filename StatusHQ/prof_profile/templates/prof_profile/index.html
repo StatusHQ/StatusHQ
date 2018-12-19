@@ -2,16 +2,25 @@
 
 <ul>
 	{% for section in sections %}
-		<li>
-			<a href="{% url 'prof_profile:prof_section' section.id %}">
-				{{ section.section_name }}
-			</a>
-			<ul>
-				{% for entry in section.profileentry_set.all %}
-					<li>{{ entry.entry_name }}</li>
-				{% endfor %}
-			</ul>
-		</li>
+		<form
+			action="{% url 'prof_profile:prof_del_section' %}"
+			method="post">
+			{% csrf_token %}
+			<li>
+				<a href="{% url 'prof_profile:prof_section' section.id %}">
+					{{ section.section_name }}
+				</a>
+
+				<input type="hidden" value="{{ section.pk }}" name="pk">
+                <input type="submit" value="-">
+				
+				<ul>
+					{% for entry in section.profileentry_set.all %}
+						<li>{{ entry.entry_name }}</li>
+					{% endfor %}
+				</ul>
+			</li>
+		</form>
 	{% endfor %}
 	<li>
 		<a href="#">

@@ -37,7 +37,16 @@ def prof_add_section(request):
 	return HttpResponseRedirect('/prof_profile')
 
 
+# Page to edit a section
+def prof_del_section(request):
+	'''View function for home page of professional profile'''
+	section = ProfileSection(pk=request.POST['pk'])
 
+	for entry in section.profileentry_set.all():
+		entry.delete()
+
+	section.delete()
+	return HttpResponseRedirect('/prof_profile')
 
 
 # 
