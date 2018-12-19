@@ -43,6 +43,7 @@ PROJECT_APPS = [
     'homepage.apps.HomepageConfig',
     # 'users',
     'applications.apps.ApplicationsConfig',
+    'prof_profile.apps.ProfProfileConfig', 
     # 'career_profile',
     # 'help_hub',
 ]

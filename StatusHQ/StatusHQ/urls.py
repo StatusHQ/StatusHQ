@@ -31,6 +31,9 @@ urlpatterns = [
     # forwards requests to applications app
     path('applications/', include('applications.urls')),
 
+    # forwards requests to professional profile app
+    path('prof_profile/', include('prof_profile.urls')),
+
     # add django auth urls for login, logour, and password management
     path('accounts/', include('django.contrib.auth.urls')),
 ]
