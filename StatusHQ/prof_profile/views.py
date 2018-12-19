@@ -28,10 +28,21 @@ def prof_section(request, section_id):
     }
 
     return render(request, 'prof_profile/prof_section.html', context)
-# 
+
+# Page to edit a section
+def prof_add_section(request):
+	'''View function for home page of professional profile'''
+	section = ProfileSection(section_name=request.POST['section_name'])
+	section.save()
+	return HttpResponseRedirect('/prof_profile')
+
+
+
+
+
 # 
 # Page to edit a section
-def prof_section_add(request, section_id):
+def prof_section_add_exp(request, section_id):
 	'''View function for home page of professional profile'''
 	section = get_object_or_404(ProfileSection, pk=section_id)
 	try:
@@ -47,7 +58,7 @@ def prof_section_add(request, section_id):
 		section.save()
 		return HttpResponseRedirect(reverse('prof_profile:prof_section', args=(section.id,)))
 
-def prof_section_del(request, section_id):
+def prof_section_del_exp(request, section_id):
 	'''View function to remove an experience'''
 	section = get_object_or_404(ProfileSection, pk=section_id)
 	try:

@@ -14,13 +14,19 @@
 		</li>
 	{% endfor %}
 	<li>
-		<a href="/prof_profile/create/">
+		<a href="#">
 			Create New Section
 		</a>
 	</li>
 </ul>
 
-
+<form 
+    action="{% url 'prof_profile:prof_add_section' %}" 
+    method="post">
+    {% csrf_token %}
+    <input type="text" name="section_name" placeholder="Section Name">
+    <input type="submit" value="Submit">
+</form>
 
 
 

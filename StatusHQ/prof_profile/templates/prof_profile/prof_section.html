@@ -19,7 +19,7 @@
                     {% for entry in section.profileentry_set.all %}
                         <li>
                             <form 
-                                action="{% url 'prof_profile:prof_section_del' section.id %}" 
+                                action="{% url 'prof_profile:prof_section_del_exp' section.id %}" 
                                 method="post">
                                 {% csrf_token %}
                                 <strong>{{ entry.entry_name }}</strong> 
@@ -38,7 +38,7 @@
             </div>
 
             <form 
-                action="{% url 'prof_profile:prof_section_add' section.id %}" 
+                action="{% url 'prof_profile:prof_section_add_exp' section.id %}" 
                 method="post">
                 {% csrf_token %}
                 <input type="text" name="experience" placeholder="New Experience">
