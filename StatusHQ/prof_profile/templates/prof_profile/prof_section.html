@@ -7,6 +7,8 @@
         <title>Professional Profile</title>
     </head>
     <body>
+        <a href="{% url 'prof_profile:index' %}">Profile Home</a>
+
         <div class="container">
             {% if error_message %}
                 <p>{{ error_message }}</p>

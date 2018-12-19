@@ -1,3 +1,5 @@
+{% load prof_profile_extras %}
+
 <h1>Professional Profile</h1>
 
 <ul>
@@ -15,18 +17,13 @@
                 <input type="submit" value="-">
 				
 				<ul>
-					{% for entry in section.profileentry_set.all %}
+					{% for entry in section|top_num:"3" %}
 						<li>{{ entry.entry_name }}</li>
 					{% endfor %}
 				</ul>
 			</li>
 		</form>
 	{% endfor %}
-	<li>
-		<a href="#">
-			Create New Section
-		</a>
-	</li>
 </ul>
 
 <form 
