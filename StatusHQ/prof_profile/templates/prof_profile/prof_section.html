@@ -20,11 +20,11 @@
                 <ul>
                     {% for entry in section.profileentry_set.all %}
                         <li>
+                            <strong>{{ entry.entry_name }}</strong> 
                             <form 
                                 action="{% url 'prof_profile:prof_section_del_exp' section.id %}" 
                                 method="post">
                                 {% csrf_token %}
-                                <strong>{{ entry.entry_name }}</strong> 
                                 <input type="hidden" value="{{ entry.pk }}" name="pk">
                                 <input type="submit" value="-">
                             </form>

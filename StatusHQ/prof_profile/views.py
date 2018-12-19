@@ -5,9 +5,6 @@ from django.urls import reverse
 
 from .models import ProfileSection, ProfileEntry
 
-# Create your views here.
-
-# Main page for the Professional Profile
 def index(request):
 	'''View function for home page of professional profile'''
 	section_list = ProfileSection.objects.order_by('section_order')
@@ -18,28 +15,24 @@ def index(request):
 
 	return render(request, 'prof_profile/index.html', context)
 
-# 
-# Individual pages for sections of professional profile
 def prof_section(request, section_id):
-    section = get_object_or_404(ProfileSection, pk=section_id)
+	'''Individual section view for categories in profile'''
+	section = get_object_or_404(ProfileSection, pk=section_id)
 
-    context = {
-    	'section': section,
-    }
+	context = {
+		'section': section,
+	}
 
-    return render(request, 'prof_profile/prof_section.html', context)
+	return render(request, 'prof_profile/prof_section.html', context)
 
-# Page to edit a section
 def prof_add_section(request):
-	'''View function for home page of professional profile'''
+	'''Adds a section to the professional profile'''
 	section = ProfileSection(section_name=request.POST['section_name'])
 	section.save()
 	return HttpResponseRedirect('/prof_profile')
 
-
-# Page to edit a section
 def prof_del_section(request):
-	'''View function for home page of professional profile'''
+	'''Delete section from professional profile'''
 	section = ProfileSection(pk=request.POST['pk'])
 
 	for entry in section.profileentry_set.all():
@@ -48,11 +41,8 @@ def prof_del_section(request):
 	section.delete()
 	return HttpResponseRedirect('/prof_profile')
 
-
-# 
-# Page to edit a section
 def prof_section_add_exp(request, section_id):
-	'''View function for home page of professional profile'''
+	'''Add an experience to a section in profile'''
 	section = get_object_or_404(ProfileSection, pk=section_id)
 	try:
 		section.profileentry_set.create(
@@ -68,7 +58,7 @@ def prof_section_add_exp(request, section_id):
 		return HttpResponseRedirect(reverse('prof_profile:prof_section', args=(section.id,)))
 
 def prof_section_del_exp(request, section_id):
-	'''View function to remove an experience'''
+	'''Delete experience from profile'''
 	section = get_object_or_404(ProfileSection, pk=section_id)
 	try:
 		selected_choice = section.profileentry_set.get(pk=request.POST['pk'])
@@ -83,12 +73,6 @@ def prof_section_del_exp(request, section_id):
 		section.save()
 		return HttpResponseRedirect(reverse('prof_profile:prof_section', args=(section.id,)))
 
-# 
-# 
-# Page to add a new section
-def prof_create(request):
-	'''View function for home page of professional profile'''
-	return HttpResponse("Hello, you creating a new section for your professional profile.")
 
 
 

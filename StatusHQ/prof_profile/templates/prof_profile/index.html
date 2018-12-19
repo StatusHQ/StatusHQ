@@ -1,4 +1,4 @@
-{% load prof_profile_extras %}
+{% load prof_profile_extras %} {# Allows for custom filters #}
 
 <h1>Professional Profile</h1>
 
@@ -30,7 +30,7 @@
     action="{% url 'prof_profile:prof_add_section' %}" 
     method="post">
     {% csrf_token %}
-    <input type="text" name="section_name" placeholder="Section Name">
+    <input type="text" name="section_name" placeholder="Add Section with Name">
     <input type="submit" value="Submit">
 </form>
 
