@@ -2,6 +2,8 @@ from django.urls import path
 from . import views
 from django.conf.urls import url
 
+app_name = 'applications'
+
 urlpatterns = [
 	path('applications/all', views.AllApplicationsListView.as_view(), name='applications-all'),
 	path('applications/past/', views.PastApplicationsListView.as_view(), name='applications-past'),
