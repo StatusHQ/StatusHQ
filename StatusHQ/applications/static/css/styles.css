@@ -1,0 +1,64 @@
+body {
+  background-color: #EDF6F7;
+  cursor: default;
+}
+
+.sidebar-nav {
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+    background-color: #EDF6F7;
+    font-size: 1.5rem;
+}
+
+.btn-outline-primary {
+  border-color: #055EB7;
+  color: #055EB7;
+  border-width: medium;
+  font-weight: bold;
+}
+
+.btn-outline-primary:hover {
+  border-color: #055EB7;
+  color: #ffffff;
+  background-color: #055EB7;
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled).active:focus, .btn-outline-primary:not(:disabled):not(.disabled):active:focus, .show>.btn-outline-primary.dropdown-toggle:focus, .btn-outline-primary:not(:disabled):not(.disabled):active, .show>.btn-outline-primary.dropdown-toggle {
+    color: #ffffff;
+    background-color: #3DB8CE;
+    border-color: #055EB7;
+    box-shadow: none;
+}
+.btn-outline-primary.focus, .btn-outline-primary:focus {
+      box-shadow: none;
+      color: #ffffff;
+      background-color: #3DB8CE;
+      border-color: #055EB7;
+    }
+
+.pointer {
+  cursor: pointer;
+}
+
+.default {
+  cursor: default;
+}
+
+.application_card {
+  width: 80vw;
+  height: 140px;
+}
+
+.application_card:hover {
+  border-color: #055EB7;
+  border-width: 1.5px;
+}
+
+.card-title {
+  line-height: 12px;
+}
+
+.col-md {
+
+}

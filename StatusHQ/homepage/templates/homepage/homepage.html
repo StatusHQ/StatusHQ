@@ -1,0 +1,13 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1 class="default">StatusHQ Home</h1>
+  <p>Welcome to StatusHQ, a website developed by <em>Charlie, Peter and Nat</em>!</p>
+  {% if user.is_authenticated %}
+  <p>Hey {{ user.get_username }}!</p> 
+  {% else %}
+  <p>Please login or signup to begin!</p>
+  <a href="{% url 'login'%}?next={{request.path}}">Login</a>/<a href="{% url 'signup' %}">Signup</a>
+  {% endif %}
+  
+{% endblock %}

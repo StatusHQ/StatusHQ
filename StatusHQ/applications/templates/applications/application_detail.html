@@ -1,0 +1,10 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Status: {{ application.get_status_display }}</h1>
+
+  <p><strong>Company:</strong> {{ application.company }}</a></p> <!-- author detail link not yet defined -->
+  <p><strong>Position:</strong> {{ application.position }}</p>
+  <p>Date Applied: {{ application.date_applied }}</p> 
+  <p>Deadline: {{ application.deadline }}</p>  
+{% endblock %}
