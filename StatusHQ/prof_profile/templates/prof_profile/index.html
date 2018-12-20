@@ -1,3 +1,7 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
 {% load prof_profile_extras %} {# Allows for custom filters #}
 
 <h1>Professional Profile</h1>
@@ -33,6 +37,6 @@
     <input type="text" name="section_name" placeholder="Add Section with Name">
     <input type="submit" value="Submit">
 </form>
-
+{% endblock %}
 
 
