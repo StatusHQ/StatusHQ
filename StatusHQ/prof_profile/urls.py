@@ -2,7 +2,7 @@
 # @Author: Charlie Gallentine
 # @Date:   2018-12-17 12:44:03
 # @Last Modified by:   Charlie Gallentine
-# @Last Modified time: 2018-12-18 21:39:35
+# @Last Modified time: 2019-01-04 12:10:03
 from django.urls import path
 from . import views
 from django.conf.urls import url
@@ -10,7 +10,7 @@ from django.conf.urls import url
 app_name = 'prof_profile'
 
 urlpatterns = [
-	path('', views.index, name='index'),
+	path('', views.IndexView.as_view(), name='index'),
 	path('<int:section_id>/', views.prof_section, name='prof_section'),
 	path('create/', views.prof_add_section, name='prof_add_section'),
 	path('remove/', views.prof_del_section, name='prof_del_section'),

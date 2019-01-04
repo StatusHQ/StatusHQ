@@ -1,19 +1,27 @@
-from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
-from django.urls import reverse
-
+from applications.models import Application 
+from django.views import generic
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy, reverse
+from applications.models import Application 
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseRedirect
+from django import forms 
 from .models import ProfileSection, ProfileEntry
 
-def index(request):
-	'''View function for home page of professional profile'''
-	section_list = ProfileSection.objects.order_by('section_order')
+class IndexView(LoginRequiredMixin, generic.ListView):
+	'''Generic class-based view listing user applications'''
+	model = ProfileSection 
+	context_object_name = 'sections'
+	template_name = 'prof_profile/index.html'
+	paginate_by = 10
 
-	context = {
-		'sections': section_list,
-	}
+	def get_queryset(self):
+		return ProfileSection.objects.filter(owner=self.request.user)
 
-	return render(request, 'prof_profile/index.html', context)
 
 def prof_section(request, section_id):
 	'''Individual section view for categories in profile'''
@@ -27,7 +35,7 @@ def prof_section(request, section_id):
 
 def prof_add_section(request):
 	'''Adds a section to the professional profile'''
-	section = ProfileSection(section_name=request.POST['section_name'])
+	section = ProfileSection(section_name=request.POST['section_name'], owner=request.user)
 	section.save()
 	return HttpResponseRedirect('/prof_profile')
 
