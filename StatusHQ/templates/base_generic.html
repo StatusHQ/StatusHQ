@@ -19,7 +19,8 @@
           <li><a class="btn btn-outline-primary" href="{% url 'homepage' %}">Home</a></li>
           {% if user.is_authenticated %}
             <li>User: {{ user.get_username }}</li>
-            <li><a class="btn btn-outline-primary" href="{% url 'applications-all' %}">My Applications</a></li>
+            <li><a class="btn btn-outline-primary" href="{% url 'applications:applications-all' %}">My Applications</a></li>
+            <li><a class="btn btn-outline-primary" href="{% url 'prof_profile:index' %}">My Profile</a></li>
             <li><a class="btn btn-outline-primary" href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
           {% else %}
             <li><a class="btn btn-outline-primary" href="{% url 'login'%}?next={{request.path}}">Login</a></li>

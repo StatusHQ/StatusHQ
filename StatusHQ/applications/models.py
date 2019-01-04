@@ -39,4 +39,4 @@ class Application(models.Model):
 
 	def get_absolute_url(self):
 		'''Returns url to access a detail record for this application'''
-		return reverse('application-detail', args=[str(self.id)])
+		return reverse('applications:application-detail', args=[str(self.id)])

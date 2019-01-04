@@ -9,6 +9,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
+from django import forms 
 
 class AllApplicationsListView(LoginRequiredMixin, generic.ListView):
 	'''Generic class-based view listing user applications'''
@@ -41,10 +42,19 @@ class PastApplicationsListView(LoginRequiredMixin, generic.ListView):
 class ApplicationDetailView(LoginRequiredMixin, generic.DetailView):
 	model = Application
 
+class ApplicationForm(forms.ModelForm):
+	class Meta:
+		model = Application 
+		fields = ['company', 'position', 'date_applied', 'deadline', 'status']
+		widgets = {
+			'date_applied': forms.SelectDateWidget(),
+			'deadline': forms.SelectDateWidget(),
+		}
 
 class ApplicationCreate(LoginRequiredMixin, CreateView):
-	model = Application
-	fields = ['company', 'position', 'date_applied', 'deadline', 'status']
+	form_class = ApplicationForm 
+	model = Application 
+	# fields = ['company', 'position', 'date_applied', 'deadline', 'status']
 
 	def form_valid(self, form):
 		form.instance.owner = self.request.user

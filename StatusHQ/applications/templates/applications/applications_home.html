@@ -2,7 +2,7 @@
 
 {% block content %}
     <h1>My Applications</h1>
-    <a href="{% url 'application-create' %}">Create new application</a> | <a href ="{% url 'applications-all' %}">All applications</a> | <a href="{% url 'applications-current' %}">Current applications</a> | <a href="{% url 'applications-past' %}">Past applications</a>
+    <a href="{% url 'applications:application-create' %}">Create new application</a> | <a href ="{% url 'applications:applications-all' %}">All applications</a> | <a href="{% url 'applications:applications-current' %}">Current applications</a> | <a href="{% url 'applications:applications-past' %}">Past applications</a>
     {% if applications_list %}
     <table cellpadding="10" class="sortable">
       <caption>Current Applications</caption>
