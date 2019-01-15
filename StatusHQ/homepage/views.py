@@ -17,11 +17,12 @@ def homepage(request):
     overdue = []
     soon = []
 
-    for application in Application.objects.filter(owner=request.user, status='p'):
-        if application.deadline < dt.date.today():
-            overdue.append(application)
-        elif (application.deadline - dt.date.today()).days <= 7:
-            soon.append(application)
+    if request.user.is_authenticated:
+        for application in Application.objects.filter(owner=request.user, status='p'):
+            if application.deadline < dt.date.today():
+                overdue.append(application)
+            elif (application.deadline - dt.date.today()).days <= 7:
+                soon.append(application)
 
     context = {
         'overdue': overdue,

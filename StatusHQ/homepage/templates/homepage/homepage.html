@@ -6,7 +6,7 @@
   <p>Welcome to StatusHQ, a website developed by <em>Charlie, Peter and Nat</em>!</p>
   {% if user.is_authenticated %}
   <p>Hey {{ user.get_full_name }}!</p> 
-  <a href="{% url 'edit-user' %}">Edit Into</a><br><br>
+  <a href="{% url 'edit-user' %}">Edit User Info</a><br><br>
   </div>
 
   <div class="deadlines">
