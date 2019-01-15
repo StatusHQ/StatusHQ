@@ -1,13 +1,48 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
+  <div class="title">
   <h1 class="default">StatusHQ Home</h1>
   <p>Welcome to StatusHQ, a website developed by <em>Charlie, Peter and Nat</em>!</p>
   {% if user.is_authenticated %}
   <p>Hey {{ user.get_full_name }}!</p> 
+  <a href="{% url 'edit-user' %}">Edit Into</a><br><br>
+  </div>
+
+  <div class="deadlines">
+  	<p>Upcoming Deadlines</p>
+  	<table cellpadding="10">
+  		<thead>
+  		<tr>
+  			<th>Application</th>
+  			<th>Deadline</th>
+  		</tr>
+  		</thead>
+  	{% if soon or overdue %}
+    {% for application in soon %}
+    <tbody>
+      <tr>
+        <td><a href="{{ application.get_absolute_url }}">{{ application }}</a></td>
+        <td>{{ application.deadline }}</td>
+      </tr>
+    {% endfor %}
+    {% for application in overdue %}
+    <tr>
+        <td><a href="{{ application.get_absolute_url }}">{{ application }}</a></td>
+        <td>{{ application.deadline }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+  </table>
+  {% else %}
+    <p>You have no upcomoing deadlines.</p>
+  {% endif %}       
+  </div>
   {% else %}
   <p>Please login or signup to begin!</p>
   <a href="{% url 'login'%}?next={{request.path}}">Login</a>/<a href="{% url 'signup' %}">Signup</a>
   {% endif %}
-  
+    <div><h5>Tip of the day!</h5>
+  	<p>Topic: </p>
+  	<p> *tip* </p></div>
 {% endblock %}

@@ -21,12 +21,21 @@
         <td><a href="{{ application.get_absolute_url }}">{{ application.company }}</a></td>
         <td>{{ application.position }}</td>
         <td>
+          <script type="text/javascript">
+            function changeStatus() {
+              if (document.getElementById("a").innerHTML == "Applied"){
+                document.getElementById("a").backgroundColor = "blue";
+              }
+              console.log(document.getElementById("a").innerHTML);
+            }
+          </script>
           <form id="status-form" name="form" action="{{ application.get_absolute_url }}/change_status/" method="post">
             {% csrf_token %}
-            <select name = "status" onchange="this.form.submit();">
-              <option selected="selected">{{ application.get_status_display }}</option>
+            <select id="status" name="status" onchange="this.form.submit(); changeStatus()">
+              <option id = "a" selected="selected">{{ application.get_status_display }}</option>
               <option value="p">In Progress</option>
               <option value="i">Interviewing</option>
+              <option value="a">Applied</option>
               <option value="d">Denied</option>
               <option value="o">Offered</option>
               <option value="r">Remove</option>

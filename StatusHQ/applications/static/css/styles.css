@@ -62,3 +62,32 @@ body {
 .col-md {
 
 }
+
+select option[value='p'] {
+  background: #DDA0DD;
+}
+
+select option[value='i'] {
+  background: #98FB98;
+}
+
+select option[value='a'] {
+  background: #FFFACD;
+}
+
+select option[value='d'] {
+  background: red;
+}
+
+select option[value='o'] {
+  background: #E0FFFF;
+}
+
+select option[value='r'] {
+  background: #D3D3D3;
+}
+
+button, select {
+  text-transform: none,
+  background-color: blue;
+}
